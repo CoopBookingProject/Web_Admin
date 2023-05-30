@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { WrapperSidebar, ButtonNav } from "./SidebarStyled";
 import { Image } from 'antd';
-import Logokenko from '../../../pic/Logokenko.png';
+import Logokenko1 from '../../../pic/Logokenko1.png';
 import Homepage from '../../../pic/Homepage.png';
 import Book from '../../../pic/Book.png';
 import Massage from '../../../pic/Massage.png';
@@ -22,7 +22,7 @@ const Sidebar = () => {
         <>
             <WrapperSidebar>
                 <div>
-                    <img src={Logokenko} style={{ width: "150px", height: "150px", marginLeft: '-80px', marginTop: '-50px' }} />
+                    <img src={Logokenko1} style={{ width: "200px", height: "100px", marginLeft: '-8px', marginTop: '-30px' }} />
                 </div>
                 {
                     path.map((val, index) => {
@@ -33,7 +33,7 @@ const Sidebar = () => {
                             </ButtonNav>
                         );
                     })}
-                <ButtonNav style={{ marginTop: '-100px' }} to="/">
+                <ButtonNav  to="/">
                     <div style={{ marginRight: '20px' }}>
                         <img src={Homepage} style={{ width: "25px", height: "25px", marginLeft: '10px', marginTop: '10px' }} />
                     </div>
@@ -70,7 +70,7 @@ const Sidebar = () => {
 
                 </ButtonNav>
 
-                <ButtonNav to="/Logout" style={{ marginTop: '340px', backgroundColor: '#617A55', color: '#fff', justifyContent: 'space-evenly' }}>
+                <ButtonNav to="/Logout" style={{ marginTop: '370px', backgroundColor: '#617A55', color: '#fff', justifyContent: 'space-evenly' }}>
                     <div style={{ marginRight: '20px' }}>
                         <img src={Logout} style={{ width: "25px", height: "25px", marginTop: '10px',marginRight:'20px' }} />
                     </div>
