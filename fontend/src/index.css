@@ -3,3 +3,9 @@ body {
   font-family: 'Kanit', sans-serif;
 }
 
+.Loginmassage {
+  background-image: url("../src/pic/Loginmassage.jpg");
+  background-size:cover;
+  height: 753px;
+  filter: brightness(110%);
+}
