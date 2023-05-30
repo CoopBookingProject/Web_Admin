@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Get, Post, Update, Delete } from "@service/http";
 import { Col, Row, Calendar, theme } from 'antd';
-import Logokenko1 from '../../../../pic/Logokenko1.png';
-import Book from '../../../../pic/Book.png';
-import Massage from '../../../../pic/Massage.png';
-import Admin from '../../../../pic/Admin.png';
+import Logokenko1 from '../../../pic/Logokenko1.png';
+import Book from '../../../pic/Book.png';
+import Massage from '../../../pic/Massage.png';
+import Admin from '../../../pic/Admin.png';
 
 const List = () => {
     const [data, setDate] = useState("");
