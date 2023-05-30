@@ -2,11 +2,11 @@ import React from "react";
 import { lazy } from "react";
 import FullLayout from "../layout/FullLayout";
 
-const AdminBook = lazy(() => import("../pages/admin/customer/Book"));
-const AdminHomepage = lazy(() => import("../pages/admin/customer/Homepage"));
-const AdminMassage = lazy(() => import("../pages/admin/customer/Massage"));
-const AdminAdmin = lazy(() => import("../pages/admin/customer/Admin"));
-const AdminLogout = lazy(() => import("../pages/admin/customer/Logout"));
+const AdminBook = lazy(() => import("../pages/admin/Booking"));
+const AdminHomepage = lazy(() => import("../pages/admin/Homepage"));
+const AdminMassage = lazy(() => import("../pages/admin/Massage"));
+const AdminAdmin = lazy(() => import("../pages/admin/AdminUser"));
+const AdminLogout = lazy(() => import("../pages/admin/Logout"));
 
 const AdminRoutes = () => {
     return {
