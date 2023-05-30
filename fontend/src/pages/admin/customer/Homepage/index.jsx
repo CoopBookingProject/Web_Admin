@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Get, Post, Update, Delete } from "@service/http";
-import { Col, Row } from 'antd';
-import Logokenko from '../../../../pic/Logokenko.png';
+import { Col, Row, Calendar, theme } from 'antd';
+import Logokenko1 from '../../../../pic/Logokenko1.png';
+import Book from '../../../../pic/Book.png';
+import Massage from '../../../../pic/Massage.png';
+import Admin from '../../../../pic/Admin.png';
+
 const List = () => {
     const [data, setDate] = useState("");
 
@@ -41,30 +45,99 @@ const List = () => {
         }
     };
 
+    const onPanelChange = (value, mode) => {
+        console.log(value.format('YYYY-MM-DD'), mode);
+    };
+    const App = () => {
+        const { token } = theme.useToken();
+        const wrapperStyle = {
+            width: 300,
+            border: `1px solid ${token.colorBorderSecondary}`,
+            borderRadius: token.borderRadiusLG,
+        };
+
+    };
+
     return (
         <>
-            <h1 style={{ marginLeft: '160px',marginTop:'-10px' }}>หน้าแรก</h1>
+            <h1 style={{ marginLeft: '160px', marginTop: '10px' }}>หน้าแรก</h1>
 
-            <div style={{ backgroundColor: '#C2D9BD',marginLeft:'160px',width:'1040px',height:'220px',borderRadius:'25px'}}>
+            <div style={{ backgroundColor: '#C2D9BD', marginLeft: '160px', width: '1040px', height: '190px', borderRadius: '25px', marginTop: '-10px' }}>
                 <>
-                <img src={Logokenko} style={{ width: "750px", height: "400px", marginLeft: '140px',marginTop:'-85px' }} />
-                </>
-            </div>
-
-            <div style={{ backgroundColor: '#C2D9BD',marginLeft:'160px',width:'334px',height:'90px',borderRadius:'50px',marginTop:'10px'}}>
-                <>
-                <div style={{ backgroundColor: '#C2D9BD',marginLeft:'355px',width:'334px',height:'90px',borderRadius:'50px',marginTop:'10px'}}>
-                <>
-                <div style={{ backgroundColor: '#C2D9BD',marginLeft:'355px',width:'334px',height:'90px',borderRadius:'50px',marginTop:'10px'}}>
-                <>
-                </>
-            </div>
-                </>
-            </div>
+                    <img src={Logokenko1} style={{ width: "750px", height: "350px", marginLeft: '140px', marginTop: '-77px' }} />
                 </>
             </div>
 
-            
+            <div style={{ backgroundColor: '#C2D9BD', marginLeft: '160px', width: '334px', height: '70px', borderRadius: '50px', marginTop: '20px' }}>
+                <>
+                    <div style={{ marginRight: '20px' }}>
+                        <img src={Book} style={{ width: "50px", height: "50px", marginLeft: '50px', marginTop: '10px' }} />
+                        <div style={{ marginLeft: '130px', fontSize: '30px', marginTop: '-52px' }}>
+                            จองคิว
+                        </div>
+                    </div>
+                </>
+                <div style={{ backgroundColor: '#C2D9BD', marginLeft: '355px', width: '334px', height: '70px', borderRadius: '50px', marginTop: '-60px' }}>
+                    <>
+                        <div style={{ marginRight: '20px' }}>
+                            <img src={Massage} style={{ width: "50px", height: "50px", marginLeft: '50px', marginTop: '10px' }} />
+                            <div style={{ marginLeft: '130px', fontSize: '30px', marginTop: '-52px' }}>
+                                ผู้นวด
+                            </div>
+                        </div>
+                    </>
+                </div>
+                <div style={{ backgroundColor: '#C2D9BD', marginLeft: '710px', width: '334px', height: '70px', borderRadius: '50px', marginTop: '-70px' }}>
+                    <>
+                        <div style={{ marginRight: '20px' }}>
+                            <img src={Admin} style={{ width: "50px", height: "50px", marginLeft: '50px', marginTop: '10px' }} />
+                            <div style={{ marginLeft: '130px', fontSize: '30px', marginTop: '-52px' }}>
+                                แอดมิน
+                            </div>
+                        </div>
+                    </>
+                </div>
+            </div>
+
+            <div style={{ backgroundColor: '#C2D9BD', marginLeft: '160px', width: '334px', height: '340px', borderRadius: '20px', marginTop: '20px' }}>
+                <div style={{ width: '300px', marginLeft: '8px', padding: '10px' }}>
+                    <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                </div>
+                <div style={{ backgroundColor: '#C2D9BD', marginLeft: '360px', width: '685px', height: '340px', borderRadius: '50px', marginTop: '-340px' }}>
+                    <div style={{ marginLeft: '280px', paddingTop: '20px', fontSize: '20px' }}>
+                        Job to done
+                    </div>
+
+                    <div style={{ backgroundColor: '#ffffff', marginLeft: '70px', width: '550px', height: '60px', borderRadius: '15px', marginTop: '30px' }}>
+                        <div style={{ fontSize: '40px', color: '#5C7042', marginLeft: '40px' }}>
+                            <div> ● </div>
+                            <div style={{ marginTop: '-45px', marginLeft: '50px', color: '#BEBEBE', fontSize: '20px' }}>
+                                ลูกค้าเข้าใช้บริการวันที่ 25 พ.ค.66
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{ backgroundColor: '#ffffff', marginLeft: '70px', width: '550px', height: '60px', borderRadius: '15px', marginTop: '20px' }}>
+                        <div style={{ fontSize: '40px', color: '#5C7042', marginLeft: '40px' }}>
+                            <div> ● </div>
+                            <div style={{ marginTop: '-45px', marginLeft: '50px', color: '#BEBEBE', fontSize: '20px' }}>
+                                ลูกค้าเข้าใช้บริการวันที่ 27 พ.ค.66
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{ backgroundColor: '#ffffff', marginLeft: '70px', width: '550px', height: '60px', borderRadius: '15px', marginTop: '20px' }}>
+                        <div style={{ fontSize: '40px', color: '#5C7042', marginLeft: '40px' }}>
+                            <div> ● </div>
+                            <div style={{ marginTop: '-45px', marginLeft: '50px', color: '#BEBEBE', fontSize: '20px' }}>
+                                ลูกค้าเข้าใช้บริการวันที่ 3 มิ.ย.66
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </>
     );
 
