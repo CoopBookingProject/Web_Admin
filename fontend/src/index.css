@@ -7,5 +7,12 @@ body {
   background-image: url("../src/pic/Loginmassage.jpg");
   background-size:cover;
   height: 753px;
-  filter: brightness(110%);
+  filter: brightness(100%);
 }
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+
+
