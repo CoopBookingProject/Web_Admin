@@ -1,0 +1,54 @@
+import { Link } from 'react-router-dom';
+import Password from '../../../pic/Password.png';
+import { Input } from 'antd';
+
+const Createnewpassword = () => {
+    return (
+        <>
+            <Link to="/">
+                <div style={{ backgroundColor: '#617A55', width: '82px', height: '82px', borderRadius: '24px', marginTop: '40px', marginLeft: '41px' }}></div>
+                <div style={{ backgroundColor: '#D9D9D9', width: '15px', height: '73.08px', borderRadius: '10px', marginTop: '-76px', marginLeft: '75px', transform: 'rotate(-45deg)' }}></div>
+                <div style={{ backgroundColor: '#D9D9D9', width: '15px', height: '73.08px', borderRadius: '10px', marginTop: '-73px', marginLeft: '74px', transform: 'rotate(45deg)' }}></div>
+            </Link>
+
+            <h1 style={{ marginLeft: '520px', fontSize: '56px', marginTop: '-78px' }}>สร้างรหัสผ่านใหม่</h1>
+
+            <div style={{ backgroundColor: '#C2D9BD', width: '306px', height: '254px', borderRadius: '56px', marginLeft: '567px', marginTop: '-40px' }}>
+                <img src={Password} style={{ width: "215px", height: "219px", marginLeft: '50px', marginTop: '17px' }} />
+            </div>
+
+            <div style={{ marginLeft: '565px', marginTop: '5px', fontSize: '16px' }}>
+                ป้อนอีเมลที่เชื่อมโยงกับบัญชีของคุณและส่งอีเมล
+            </div>
+            <div style={{ marginLeft: '580px', fontSize: '16px' }}>
+                พร้อมคำแนะนำในการรีเซ็ตรหัสผ่านของคุณ
+            </div>
+
+            <div style={{ marginLeft: '530px', fontSize: '16px', marginTop: '10px' }}>
+                รหัสผ่านใหม่
+            </div>
+
+            <div style={{ width: '387px', marginLeft: '527px', marginTop: '10px' }}>
+                <Input style={{ height: '68px', borderRadius: '48px', backgroundColor: '#C2D9BD' }} placeholder="" />
+            </div>
+
+            <div style={{ marginLeft: '530px', fontSize: '16px', marginTop: '5px' }}>
+                ยืนยันรหัสผ่าน
+            </div>
+
+            <div style={{ width: '387px', marginLeft: '527px', marginTop: '10px' }}>
+                <Input style={{ height: '68px', borderRadius: '48px', backgroundColor: '#C2D9BD' }} placeholder="" />
+            </div>
+
+            <div style={{ backgroundColor: '#617A55', marginLeft: '630px', width: '184px', height: '68px', borderRadius: '48px', marginTop: '15px' }}>
+                <Link to="/"><div style={{ marginLeft: '50px', padding: '15px', color: '#ffffff', fontSize: '24px' }}>
+                    บันทึก
+                </div>
+                </Link>
+            </div>
+
+        </>
+    );
+};
+
+export default Createnewpassword;

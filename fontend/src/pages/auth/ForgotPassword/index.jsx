@@ -32,11 +32,14 @@ const ForgotPassword = () => {
         <Input style={{ height: '68px', borderRadius: '48px', backgroundColor: '#C2D9BD' }} placeholder="" />
       </div>
 
-      <div style={{ backgroundColor: '#617A55', marginLeft: '630px', width: '184px', height: '68px', borderRadius: '48px', marginTop: '60px' }}>
-        <div style={{ marginLeft: '50px', padding: '15px', color: '#ffffff', fontSize: '24px' }}>
-          บันทึก
+      
+        <div style={{ backgroundColor: '#617A55', marginLeft: '630px', width: '184px', height: '68px', borderRadius: '48px', marginTop: '60px' }}>
+        <Link to="Otp"><div style={{ marginLeft: '50px', padding: '15px', color: '#ffffff', fontSize: '24px' }}>
+            บันทึก
+          </div>
+        </Link>
         </div>
-      </div>
+      
     </>
   );
 };
