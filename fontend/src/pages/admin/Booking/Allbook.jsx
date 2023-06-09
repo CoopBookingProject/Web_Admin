@@ -176,6 +176,7 @@ const Allbook = () => {
                       marginTop: "15px",
                     }}
                     placeholder=""
+                    disabled // แก้ไขตรงนี้
                   />
                 </div>
               </Col>
@@ -191,8 +192,10 @@ const Allbook = () => {
                       marginTop: "15px",
                     }}
                     placeholder=""
+                    disabled
                   />
                 </div>
+
               </Col>
             </Row>
             <Row gutter={[16, 16]}>
@@ -208,40 +211,44 @@ const Allbook = () => {
                       marginTop: "15px",
                     }}
                     placeholder=""
+                    disabled
                   />
                 </div>
+
               </Col>
               <Col span={12}>
-             
-                  <div style={{ marginTop: "15px", marginLeft: "5px" }}>
+
+                <div style={{ marginTop: "15px", marginLeft: "5px" }}>
                   ระดับนวด
                 </div>
                 <div>
                   <Space style={{ marginTop: '25px', marginLeft: '9px' }}>
-                    <Radio.Group value={massageLevel} onChange={(e) => handleMassageLevelChange(e.target.value)}>
+                    <Radio.Group value={massageLevel} onChange={(e) => handleMassageLevelChange(e.target.value)} disabled>
                       <Radio value="เบา">เบา</Radio>
                       <Radio value="กลาง">กลาง</Radio>
                       <Radio value="หนัก">หนัก</Radio>
                     </Radio.Group>
                   </Space>
                 </div>
+
               </Col>
             </Row>
             <Row>
               <Col span={12}>
                 <div>
                   <div style={{ marginTop: "15px" }}>เพศ</div>
-                <Space style={{ marginTop: '25px' }}>
-                  <Radio.Group value={gender} onChange={(e) => handleGenderChange(e.target.value)}>
-                    <Radio value="เพศชาย">เพศชาย</Radio>
-                    <Radio value="เพศหญิง">เพศหญิง</Radio>
-                    <Radio value="เพศทางเลือก">เพศทางเลือก</Radio>
-                  </Radio.Group>
-                </Space>
+                  <Space style={{ marginTop: '25px' }}>
+                    <Radio.Group value={gender} onChange={(e) => handleGenderChange(e.target.value)} disabled>
+                      <Radio value="เพศชาย">เพศชาย</Radio>
+                      <Radio value="เพศหญิง">เพศหญิง</Radio>
+                      <Radio value="เพศทางเลือก">เพศทางเลือก</Radio>
+                    </Radio.Group>
+                  </Space>
                 </div>
+
               </Col>
               <Col span={12}>
-              <div style={{ marginTop: "15px",marginLeft:'15px' }}>ปฏิทิน</div>
+                <div style={{ marginTop: "15px", marginLeft: '15px' }}>ปฏิทิน</div>
                 <div>
                   <DatePicker
                     style={{
@@ -250,27 +257,31 @@ const Allbook = () => {
                       borderRadius: "48px",
                       backgroundColor: "#C2D9BD",
                       marginTop: "15px",
-                      marginLeft:'15px'
+                      marginLeft: '15px'
                     }}
+                    disabled
                   />
                 </div>
+
               </Col>
             </Row>
             <Row>
               <Col span={12}>
-                <div style={{ marginTop: "15px",marginLeft:'5px' }}>เวลา</div>
-              <TimePicker
-                    style={{
-                      width: "300px",
-                      height: "40px",
-                      borderRadius: "48px",
-                      backgroundColor: "#C2D9BD",
-                      marginTop: "15px",
-                      marginLeft:'5px'
-                    }}
-                    placeholder=""
-                  />
+                <div style={{ marginTop: "15px", marginLeft: '5px' }}>เวลา</div>
+                <TimePicker
+                  style={{
+                    width: "300px",
+                    height: "40px",
+                    borderRadius: "48px",
+                    backgroundColor: "#C2D9BD",
+                    marginTop: "15px",
+                    marginLeft: '5px'
+                  }}
+                  placeholder=""
+                  disabled
+                />
               </Col>
+
             </Row>
             <div
               style={{

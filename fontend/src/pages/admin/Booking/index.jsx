@@ -16,8 +16,9 @@ import {
 } from "./Bookingstyed";
 import Allbook from "./Allbook";
 import Cancelled from "./Cancelled";
+
 const Book = () => {
-    const [activeMenu, setActiveMenu] = useState("เเอดมินทั้งหมด");
+    const [activeMenu, setActiveMenu] = useState("การจองทั้งหมด"); // เปลี่ยนค่าเริ่มต้นให้เป็น "การจองทั้งหมด"
     const [dropdownValue, setDropdownValue] = useState("เลือกตัวเลือก");
     const [showModal, setShowModal] = useState(false);
 
@@ -67,17 +68,14 @@ const Book = () => {
                 )}
 
                 <MainTable>
-                    {activeMenu === "การจองทั้งหมด" && <Allbook/>}
-                    {activeMenu === "ยกเลิก" && <Cancelled/>}
+                    {activeMenu === "ยกเลิก" && <Cancelled/>} {/* เปลี่ยนตำแหน่งของการแสดงผล */}
+                    {activeMenu === "การจองทั้งหมด" && <Allbook/>} {/* เปลี่ยนตำแหน่งของการแสดงผล */}
                 </MainTable>
 
             </AdminBody>
 
-
-         
         </>
     );
 };
 
 export default Book;
-
