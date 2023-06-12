@@ -7,6 +7,7 @@ const AdminHomepage = lazy(() => import("../pages/admin/Homepage"));
 const AdminMassage = lazy(() => import("../pages/admin/Massage"));
 const AdminAdmin = lazy(() => import("../pages/admin/AdminUser"));
 const AdminLogout = lazy(() => import("../pages/admin/Logout"));
+const AdminPromotion = lazy(() => import("../pages/admin/Promotion"));
 
 const AdminRoutes = () => {
     return {
@@ -28,6 +29,10 @@ const AdminRoutes = () => {
             {
                 path: "/Admin",
                 element: <AdminAdmin/>,
+            },
+            {
+                path: "/Promotion",
+                element: <AdminPromotion/>,
             },
             {
                 path: "/Logout",
