@@ -8,6 +8,7 @@ import Book from '../../../pic/Book.png';
 import Massage from '../../../pic/Massage.png';
 import Admin from '../../../pic/Admin.png';
 import Logout from '../../../pic/Logout.png';
+import Promotion from '../../../pic/Promotion.png';
 const Sidebar = () => {
     const navigate = useNavigate();
 
@@ -70,7 +71,17 @@ const Sidebar = () => {
 
                 </ButtonNav>
 
-                <ButtonNav to="/Logout" style={{ marginTop: '370px', backgroundColor: '#617A55', color: '#fff', justifyContent: 'space-evenly' }}>
+                <ButtonNav to="/Promotion">
+                    <div style={{ marginRight: '20px' }}>
+                        <img src={Promotion} style={{ width: "25px", height: "25px", marginLeft: '-20px', marginTop: '10px' }} />
+                    </div>
+                    <div style={{marginLeft:'-5px' }}>
+                        โปรโมชัน
+                    </div>
+
+                </ButtonNav>
+
+                <ButtonNav to="/Logout" style={{ marginTop: '310px', backgroundColor: '#617A55', color: '#fff', justifyContent: 'space-evenly' }}>
                     <div style={{ marginRight: '20px' }}>
                         <img src={Logout} style={{ width: "25px", height: "25px", marginTop: '10px',marginRight:'20px' }} />
                     </div>
