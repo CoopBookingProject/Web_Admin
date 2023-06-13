@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Homepage from "../../../pic/Homepage.png";
 import bin from "../../../pic/bin.png";
 import edit from "../../../pic/edit.png";
-import { Modal, Col, Row, Input, Button, Radio, Space, TimePicker, DatePicker } from "antd";
+import { Modal, Col, Row, Input, Button, Radio, Space, TimePicker, DatePicker, Select, AutoComplete } from "antd";
 import {
     Header,
     Iconbutton,
@@ -156,19 +156,6 @@ const Book = () => {
                         </div>
                     </Col>
                     <Col span={12}>
-                        <div style={{ marginTop: "15px" }}>ระดับนวด</div>
-                        <div style={{ marginTop: '25px', marginLeft: '9px' }}>
-                            <Radio.Group value={massageLevel} onChange={(e) => setMassageLevel(e.target.value)}>
-                                <Radio value="เบา">เบา</Radio>
-                                <Radio value="กลาง">กลาง</Radio>
-                                <Radio value="หนัก">หนัก</Radio>
-                            </Radio.Group>
-                        </div>
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col span={12}>
                         <div style={{ marginTop: "15px" }}>เพศ</div>
                         <div style={{ marginTop: '25px', marginLeft: '9px' }}>
                             <Radio.Group value={gender} onChange={(e) => setGender(e.target.value)}>
@@ -178,38 +165,102 @@ const Book = () => {
                             </Radio.Group>
                         </div>
                     </Col>
+                </Row>
+
+                <Row>
                     <Col span={12}>
-                        <div style={{ marginTop: "15px", marginLeft: '15px' }}>ปฏิทิน</div>
+                        <div style={{ marginTop: "15px" }}>บริการนวด</div>
                         <div>
-                            <DatePicker
+                            <AutoComplete
                                 style={{
-                                    width: "332px",
+                                    width: "340px",
                                     height: "40px",
-                                    borderRadius: "48px",
-                                    backgroundColor: "#C2D9BD",
                                     marginTop: "15px",
-                                    marginLeft: '15px'
                                 }}
+                                options={[
+                                    { value: 'นวดแผนไทยยาหม่อง' },
+                                    { value: 'นวดน้ำมันอโรม่า' },
+                                    { value: 'นวดเจลว่านหางจรเข้' },
+                                    { value: 'นวดเท้า' },
+                                    { value: 'นวดประคบสมุนไพร' },
+                                    { value: 'นวดหินร้อน' },
+                                ]}
+                                placeholder="เลือกบริการนวด"
+                                filterOption={(inputValue, option) =>
+                                    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                }
+                            />
+                        </div>
+                    </Col>
+                    <Col span={12}>
+                        <div style={{ marginTop: "15px", marginLeft: '10px' }}>ผู้นวด</div>
+                        <div>
+                            <AutoComplete
+                                style={{
+                                    width: "340px",
+                                    height: "40px",
+                                    marginTop: "15px",
+                                    marginLeft: '15px',
+                                }}
+                                options={[
+                                    { value: 'เกมส์' },
+                                    { value: 'ต่อ' },
+                                    { value: 'เบล' },
+                                    { value: 'ฟลุ๊ก' },
+                                    { value: 'ฝ้าย' },
+                                    { value: 'ใครก็ได้' },
+                                ]}
+                                placeholder="เลือกผู้นวด"
+                                filterOption={(inputValue, option) =>
+                                    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                }
                             />
                         </div>
                     </Col>
                 </Row>
+
                 <Row>
                     <Col span={12}>
-                        <div style={{ marginTop: "15px", marginLeft: '5px' }}>เวลา</div>
+                        <div style={{ marginTop: "15px" }}>ระดับนวด</div>
+                        <div style={{ marginTop: '25px' }}>
+                            <Radio.Group value={massageLevel} onChange={(e) => setMassageLevel(e.target.value)}>
+                                <Radio value="เบา">เบา</Radio>
+                                <Radio value="กลาง">กลาง</Radio>
+                                <Radio value="หนัก">หนัก</Radio>
+                            </Radio.Group>
+                        </div>
+                    </Col>
+                    <Col span={6}>
+                        <div style={{ marginTop: "15px", marginLeft: '10px' }}>ปฏิทิน</div>
+                        <div>
+                            <DatePicker
+                                style={{
+                                    width: "165px",
+                                    height: "40px",
+                                    borderRadius: "48px",
+                                    backgroundColor: "#C2D9BD",
+                                    marginTop: "15px",
+                                    marginLeft: '10px',
+                                }}
+                            />
+                        </div>
+                    </Col>
+                    <Col span={6}>
+                        <div style={{ marginTop: "15px", marginLeft: '10px' }}>เวลา</div>
                         <TimePicker
                             style={{
-                                width: "332px",
+                                width: "165px",
                                 height: "40px",
                                 borderRadius: "48px",
                                 backgroundColor: "#C2D9BD",
                                 marginTop: "15px",
-                                marginLeft: '5px'
+                                marginLeft: '10px',
                             }}
                             placeholder=""
                         />
                     </Col>
                 </Row>
+
                 <div
                     style={{
                         marginLeft: '300px',
