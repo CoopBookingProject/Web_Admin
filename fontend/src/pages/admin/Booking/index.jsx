@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Homepage from "../../../pic/Homepage.png";
 import bin from "../../../pic/bin.png";
 import edit from "../../../pic/edit.png";
-import { Input, Col, Row } from 'antd';
+import { Modal, Col, Row, Input, Button, Radio, Space, TimePicker, DatePicker } from "antd";
 import {
-    AdminHeader,
+    Header,
     Iconbutton,
     Bar1,
     Bar2,
@@ -18,42 +18,67 @@ import Allbook from "./Allbook";
 import Cancelled from "./Cancelled";
 
 const Book = () => {
-    const [activeMenu, setActiveMenu] = useState("การจองทั้งหมด"); // เปลี่ยนค่าเริ่มต้นให้เป็น "การจองทั้งหมด"
+    const [activeMenu, setActiveMenu] = useState("การจองทั้งหมด");
     const [dropdownValue, setDropdownValue] = useState("เลือกตัวเลือก");
-    const [showModal, setShowModal] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [size, setSize] = useState('small');
+    const [gender, setGender] = useState(''); // เพศ
+    const [massageLevel, setMassageLevel] = useState(''); // ระดับนวด
 
-    const handleTableFillterClick = (menu) => {
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setGender('');
+        setMassageLevel('');
+    };
+
+    const handleSave = () => {
+        setIsModalOpen(false);
+        setGender('');
+        setMassageLevel('');
+
+        // เพิ่มโค้ดส่วนของการจัดการกับข้อมูลหลังจากกดบันทึก
+    };
+
+    const handleAddBookingClick = () => {
+        setIsModalOpen(true);
+
+        // ส่งค่าเพศและระดับนวดไปยังส่วนอื่นของแอปพลิเคชัน
+        // เช่น ส่งไปยัง API, เก็บในฐานข้อมูล, หรือประมวลผลอื่นๆ
+        console.log('เพศที่เลือก:', gender);
+        console.log('ระดับนวดที่เลือก:', massageLevel);
+    };
+
+    const handleTableFilterClick = (menu) => {
         setActiveMenu(menu);
     };
 
     const handleDropdownChange = (event) => {
-        if (event.target.value !== dropdownValue) {
-            setDropdownValue(event.target.value);
+        const value = event.target.value;
+        if (value !== dropdownValue) {
+            setDropdownValue(value);
         }
-    };
-
-    const handleEditClick = () => {
-        setShowModal(true);
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
     };
 
     return (
         <>
-            <AdminHeader>
+            <Header>
                 <h1>จองคิว</h1>
-            </AdminHeader>
+                <Iconbutton style={{ cursor: 'pointer' }} onClick={handleAddBookingClick}>
+                    <Bar1></Bar1>
+                    <Bar2></Bar2>
+                    <p style={{ marginLeft: "63px" }}>เพิ่มการจอง</p>
+                </Iconbutton>
+            </Header>
+
             <AdminBody>
                 <TableFillter
-                    onClick={() => handleTableFillterClick("การจองทั้งหมด")}
+                    onClick={() => handleTableFilterClick("การจองทั้งหมด")}
                     isActive={activeMenu === "การจองทั้งหมด"}
                 >
                     การจองทั้งหมด
                 </TableFillter>
                 <TableFillter
-                    onClick={() => handleTableFillterClick("ยกเลิก")}
+                    onClick={() => handleTableFilterClick("ยกเลิก")}
                     isActive={activeMenu === "ยกเลิก"}
                 >
                     ยกเลิก
@@ -68,12 +93,141 @@ const Book = () => {
                 )}
 
                 <MainTable>
-                    {activeMenu === "ยกเลิก" && <Cancelled/>} {/* เปลี่ยนตำแหน่งของการแสดงผล */}
-                    {activeMenu === "การจองทั้งหมด" && <Allbook/>} {/* เปลี่ยนตำแหน่งของการแสดงผล */}
+                    {activeMenu === "ยกเลิก" && <Cancelled />}
+                    {activeMenu === "การจองทั้งหมด" && <Allbook />}
                 </MainTable>
-
             </AdminBody>
 
+            {/* pop up */}
+            <Modal
+                visible={isModalOpen}
+                onCancel={handleCloseModal}
+                footer={null}
+                width={750}
+            >
+                <h1 style={{ marginLeft: "270px" }}>เพิ่มการจองคิว</h1>
+                <Row gutter={[16, 16]}>
+                    <Col span={12}>
+                        <div>ชื่อ</div>
+                        <div>
+                            <Input
+                                style={{
+                                    height: "40px",
+                                    width: "340px",
+                                    borderRadius: "48px",
+                                    backgroundColor: "#C2D9BD",
+                                    marginTop: "15px",
+                                }}
+                                placeholder=""
+                            />
+                        </div>
+                    </Col>
+                    <Col span={12}>
+                        <div>นามสกุล</div>
+                        <div>
+                            <Input
+                                style={{
+                                    height: "40px",
+                                    width: "340px",
+                                    borderRadius: "48px",
+                                    backgroundColor: "#C2D9BD",
+                                    marginTop: "15px",
+                                }}
+                                placeholder=""
+                            />
+                        </div>
+                    </Col>
+                </Row>
+
+                <Row gutter={[16, 16]}>
+                    <Col span={12}>
+                        <div style={{ marginTop: "15px" }}>เบอร์โทรศัพท์</div>
+                        <div>
+                            <Input
+                                style={{
+                                    height: "40px",
+                                    width: "340px",
+                                    borderRadius: "48px",
+                                    backgroundColor: "#C2D9BD",
+                                    marginTop: "15px",
+                                }}
+                                placeholder=""
+                            />
+                        </div>
+                    </Col>
+                    <Col span={12}>
+                        <div style={{ marginTop: "15px" }}>ระดับนวด</div>
+                        <div style={{ marginTop: '25px', marginLeft: '9px' }}>
+                            <Radio.Group value={massageLevel} onChange={(e) => setMassageLevel(e.target.value)}>
+                                <Radio value="เบา">เบา</Radio>
+                                <Radio value="กลาง">กลาง</Radio>
+                                <Radio value="หนัก">หนัก</Radio>
+                            </Radio.Group>
+                        </div>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col span={12}>
+                        <div style={{ marginTop: "15px" }}>เพศ</div>
+                        <div style={{ marginTop: '25px', marginLeft: '9px' }}>
+                            <Radio.Group value={gender} onChange={(e) => setGender(e.target.value)}>
+                                <Radio value="เพศชาย">เพศชาย</Radio>
+                                <Radio value="เพศหญิง">เพศหญิง</Radio>
+                                <Radio value="เพศทางเลือก">เพศทางเลือก</Radio>
+                            </Radio.Group>
+                        </div>
+                    </Col>
+                    <Col span={12}>
+                        <div style={{ marginTop: "15px", marginLeft: '15px' }}>ปฏิทิน</div>
+                        <div>
+                            <DatePicker
+                                style={{
+                                    width: "332px",
+                                    height: "40px",
+                                    borderRadius: "48px",
+                                    backgroundColor: "#C2D9BD",
+                                    marginTop: "15px",
+                                    marginLeft: '15px'
+                                }}
+                            />
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span={12}>
+                        <div style={{ marginTop: "15px", marginLeft: '5px' }}>เวลา</div>
+                        <TimePicker
+                            style={{
+                                width: "332px",
+                                height: "40px",
+                                borderRadius: "48px",
+                                backgroundColor: "#C2D9BD",
+                                marginTop: "15px",
+                                marginLeft: '5px'
+                            }}
+                            placeholder=""
+                        />
+                    </Col>
+                </Row>
+                <div
+                    style={{
+                        marginLeft: '300px',
+                        fontSize: '20px',
+                        textAlign: 'center',
+                        width: '100px',
+                        height: '35px',
+                        borderRadius: '48px',
+                        backgroundColor: '#617A55',
+                        marginTop: '25px',
+                        cursor: 'pointer',
+                        color: '#fff',
+                    }}
+                    onClick={handleSave}
+                >
+                    <div>บันทึก</div>
+                </div>
+            </Modal>
         </>
     );
 };
