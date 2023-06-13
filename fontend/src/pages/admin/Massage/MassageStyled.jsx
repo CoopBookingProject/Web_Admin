@@ -17,6 +17,7 @@ export const Iconbutton = styled.div`
   align-items: center;
   font-size: 24px;
   transition: background-color 0.5s ease;
+  cursor: pointer;
 
   &:hover {
   background-color: #617A55;

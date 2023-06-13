@@ -52,7 +52,7 @@ const columns = [
           break;
         case 'Process':
           color = 'error';
-          text = 'กำลังใหบริการ';
+          text = 'กำลังให้บริการ';
           break;
         default:
           color = 'default';
