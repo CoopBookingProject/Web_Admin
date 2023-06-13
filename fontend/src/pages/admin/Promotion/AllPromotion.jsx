@@ -122,6 +122,7 @@ const AllPromotion = () => {
         <StyledTable dataSource={dataSource} columns={columns} />
       </TableSize>
 
+      
       <Modal
         visible={isModalVisible}
         onCancel={handleCancel}

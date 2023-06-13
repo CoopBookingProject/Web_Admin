@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { NavLink as BaseNavLink } from "react-router-dom";
 import { Table } from "antd";
 
-export const AdminHeader = styled.div`
+export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
