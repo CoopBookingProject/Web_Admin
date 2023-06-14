@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Button, Input, Modal, Form, Row, Col } from 'antd';
 import AllCancelled from "./AdminTable/AllCancelled";
 import AllAdmin from "./AdminTable/AllAdmin";
 
@@ -15,20 +15,38 @@ import {
     MainTable,
 } from "./AdminStyled";
 
+const { useForm } = Form;
+
 const Admin = () => {
     const [activeMenu, setActiveMenu] = useState("เเอดมินทั้งหมด");
+    const [modalVisible, setModalVisible] = useState(false);
+    
+    const [form] = useForm(); // Declare the form object
 
     const handleTableFillterClick = (menu) => {
         setActiveMenu(menu);
     };
-
+    
+    const handleAddAdminClick = () => {
+        setModalVisible(true);
+      };
+    
+    const handleModalOk = () => {
+        // Handle OK button click
+        setModalVisible(false);
+    };
+    
+    const handleModalCancel = () => {
+        // Handle Cancel button click
+        setModalVisible(false);
+    };
 
 
     return (
         <>
             <AdminHeader>
                 <h1 style={{ pointerEvents: 'none' }}>แอดมิน</h1>
-                <Iconbutton>
+                <Iconbutton  onClick={handleAddAdminClick}>
                     <Bar1></Bar1>
                     <Bar2></Bar2>
                     <p style={{ marginLeft: '63px' }}>เพิ่มแอดมิน</p>
@@ -59,8 +77,104 @@ const Admin = () => {
                 </MainTable>
             </AdminBody>
 
-        </>
-    );
+            <Modal
+        title={
+            <h1 style={{ textAlign: 'center', marginBottom: '10px' }}>
+              เพิ่มข้อมูลแอดมิน
+            </h1>
+          }
+        visible={modalVisible}
+        onOk={handleModalOk}
+        onCancel={handleModalCancel}
+        destroyOnClose
+        centered
+        maskStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+        bodyStyle={{ backgroundColor: '#fff', padding: '20px 20px 5px', borderRadius: '5px' }}
+        width={650}
+        footer={[
+            <div key="footer-buttons" style={{ textAlign: 'center' }}>
+             <Button
+  key="submit"
+  type="primary"
+  onClick={handleModalOk} // Change handleOk to handleModalOk
+  style={{
+    borderRadius: '48px',
+    backgroundColor: '#617A55',
+    color: '#fff',
+    height: '50px',
+    width: '125px',
+    transition: 'background-color 0.3s ease',
+  }}
+  onMouseEnter={(e) => {
+    e.target.style.backgroundColor = '#496841';
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.backgroundColor = '#617A55';
+  }}
+>
+  บันทึก
+</Button>
+            </div>
+          ]}
+        >
+        {/* Add your modal content here */}
+        <Form form={form} layout="vertical">
+        <Row gutter={[16, 16]}>
+          <Col span={12}>
+            <Form.Item label="ชื่อ" name="name">
+              <Input
+                style={{
+                  height: '40px',
+                  borderRadius: '48px',
+                  backgroundColor: '#C2D9BD',
+                }}
+                placeholder=""
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item label="นามสกุล" name="surname">
+              <Input
+                style={{
+                  height: '40px',
+                  borderRadius: '48px',
+                  backgroundColor: '#C2D9BD',
+                }}
+                placeholder=""
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item label="ตำแหน่งงานที่รับผิดชอบ" name="position">
+              <Input
+                style={{
+                  height: '40px',
+                  borderRadius: '48px',
+                  backgroundColor: '#C2D9BD',
+                }}
+                placeholder=""
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item label="เบอร์โทรศัพท์" name="phone">
+              <Input
+                style={{
+                  height: '40px',
+                  borderRadius: '48px',
+                  backgroundColor: '#C2D9BD',
+                }}
+                placeholder=""
+              />
+            </Form.Item>
+          </Col>
+        
+          {/* Add more form fields here */}
+        </Row>
+       </Form>
+      </Modal>
+    </>
+  );
 };
 
 export default Admin;
