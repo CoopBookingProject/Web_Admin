@@ -155,7 +155,7 @@ const Book = () => {
                             />
                         </div>
                     </Col>
-                    <Col span={12}>
+                    <Col span={12} >
                         <div style={{ marginTop: "15px" }}>เพศ</div>
                         <div style={{ marginTop: '25px', marginLeft: '9px' }}>
                             <Radio.Group value={gender} onChange={(e) => setGender(e.target.value)}>
@@ -168,7 +168,7 @@ const Book = () => {
                 </Row>
 
                 <Row>
-                    <Col span={12}>
+                    <Col span={12} >
                         <div style={{ marginTop: "15px" }}>บริการนวด</div>
                         <div>
                             <AutoComplete

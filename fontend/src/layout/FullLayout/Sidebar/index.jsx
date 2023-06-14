@@ -9,6 +9,9 @@ import Massage from '../../../pic/Massage.png';
 import Admin from '../../../pic/Admin.png';
 import Logout from '../../../pic/Logout.png';
 import Promotion from '../../../pic/Promotion.png';
+import service from '../../../pic/service.png';
+import Customerservice from '../../../pic/Customerservice.png';
+
 const Sidebar = () => {
     const navigate = useNavigate();
 
@@ -34,7 +37,7 @@ const Sidebar = () => {
                             </ButtonNav>
                         );
                     })}
-                <ButtonNav  to="/">
+                <ButtonNav to="/">
                     <div style={{ marginRight: '20px' }}>
                         <img src={Homepage} style={{ width: "25px", height: "25px", marginLeft: '10px', marginTop: '10px' }} />
                     </div>
@@ -75,15 +78,32 @@ const Sidebar = () => {
                     <div style={{ marginRight: '20px' }}>
                         <img src={Promotion} style={{ width: "25px", height: "25px", marginLeft: '-20px', marginTop: '10px' }} />
                     </div>
-                    <div style={{marginLeft:'-5px' }}>
+                    <div style={{ marginLeft: '-5px' }}>
                         โปรโมชัน
                     </div>
-
                 </ButtonNav>
 
-                <ButtonNav to="/Logout" style={{ marginTop: '310px', backgroundColor: '#617A55', color: '#fff', justifyContent: 'space-evenly' }}>
+                <ButtonNav to="/service">
                     <div style={{ marginRight: '20px' }}>
-                        <img src={Logout} style={{ width: "25px", height: "25px", marginTop: '10px',marginRight:'20px' }} />
+                        <img src={service} style={{ width: "25px", height: "25px", marginLeft: '-35px', marginTop: '10px' }} />
+                    </div>
+                    <div style={{ marginLeft: '-5px' }}>
+                        เซอร์วิส
+                    </div>
+                </ButtonNav>
+
+                <ButtonNav to="/Customerservice">
+                    <div style={{ marginRight: '20px' }}>
+                    <img src={Customerservice} style={{ width: "25px", height: "25px", marginLeft: '-10px', marginTop: '10px' }} />
+                    </div>
+                    <div style={{ marginLeft: '-15px' }}>
+                        บริการลูกค้า
+                    </div>
+                </ButtonNav>
+
+                <ButtonNav to="/Logout" style={{ marginTop: '200px', backgroundColor: '#617A55', color: '#fff', justifyContent: 'space-evenly' }}>
+                    <div style={{ marginRight: '20px' }}>
+                        <img src={Logout} style={{ width: "25px", height: "25px", marginTop: '10px', marginRight: '20px' }} />
                     </div>
                     <div style={{ marginLeft: '-50px' }}>
                         ออกจากระบบ

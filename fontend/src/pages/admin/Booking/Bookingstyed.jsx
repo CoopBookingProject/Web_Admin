@@ -57,7 +57,7 @@ export const TableFillter = styled.div`
   `;
 
 export const Line1= styled.div`
-  width: 1190px;
+  width: 1245px;
   height: 5px;
   background-color: #D9D9D9;
   position: absolute;
