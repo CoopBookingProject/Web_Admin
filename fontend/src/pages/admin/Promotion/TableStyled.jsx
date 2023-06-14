@@ -5,7 +5,7 @@ import { Table } from "antd";
 
 export const TableSize = styled.div`
   margin-top: 33px;
-  width: 1190px;
+  width: 1245px;
 `;
 export const StyledTable = styled(Table)`
   .ant-table-thead > tr > th {
