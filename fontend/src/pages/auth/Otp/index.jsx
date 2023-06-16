@@ -23,7 +23,7 @@ export default function App() {
                 <img src={Tel} style={{ width: "215px", height: "219px", marginLeft: '50px', marginTop: '17px' }} />
             </div>
 
-            <div style={{ marginLeft: '536px', marginTop: '60px' }}>
+            <div style={{ marginLeft: '440px', marginTop: '60px' }}>
                 <OtpInput
                     value={otp}
                     onChange={setOtp}
