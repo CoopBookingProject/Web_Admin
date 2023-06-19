@@ -104,9 +104,9 @@ const Allbook = () => {
       width: 50,
       render: (text, record) => (
         <DeleteOutlined
-      style={{ fontSize: '18px', cursor: 'pointer', marginLeft: '8px' }}
-      onClick={() => handleDeleteRecord(record)}
-    />
+          style={{ fontSize: '18px', cursor: 'pointer', marginLeft: '8px' }}
+          onClick={() => handleDeleteRecord(record)}
+        />
       ),
     },
   ];
@@ -283,14 +283,14 @@ const Allbook = () => {
             </Row>
             <div
               style={{
-                marginLeft: '260px',
+                marginLeft: '300px',
                 fontSize: '20px',
                 textAlign: 'center',
                 width: '100px',
-                height: '30px',
+                height: '35px',
                 borderRadius: '48px',
                 backgroundColor: '#617A55',
-                marginTop: '15px',
+                marginTop: '25px',
                 cursor: 'pointer',
                 color: '#fff',
               }}

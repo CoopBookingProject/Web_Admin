@@ -100,9 +100,10 @@ const Service = () => {
     borderRadius: '48px',
     backgroundColor: '#617A55',
     color: '#fff',
-    height: '50px',
-    width: '125px',
+    height: '35px',
+    width: '100px',
     transition: 'background-color 0.3s ease',
+    fontSize:'20px'
   }}
   onMouseEnter={(e) => {
     e.target.style.backgroundColor = '#496841';
@@ -111,7 +112,7 @@ const Service = () => {
     e.target.style.backgroundColor = '#617A55';
   }}
 >
-  บันทึก
+  <div style={{marginTop:'-5px'}}>บันทึก</div>
 </Button>
             </div>
           ]}
