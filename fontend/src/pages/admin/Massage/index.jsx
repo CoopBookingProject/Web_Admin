@@ -80,10 +80,10 @@ const Massage = () => {
 
       <Modal
         title={
-            <h1 style={{ textAlign: 'center', marginBottom: '10px' }}>
-              เพิ่มข้อมูลผู้นวด
-            </h1>
-          }
+          <h1 style={{ textAlign: 'center', marginBottom: '10px' }}>
+            เพิ่มข้อมูลผู้นวด
+          </h1>
+        }
         visible={modalVisible}
         onOk={handleModalOk}
         onCancel={handleModalCancel}
@@ -93,108 +93,109 @@ const Massage = () => {
         bodyStyle={{ backgroundColor: '#fff', padding: '20px 20px 5px', borderRadius: '5px' }}
         width={650}
         footer={[
-            <div key="footer-buttons" style={{ textAlign: 'center' }}>
-             <Button
-  key="submit"
-  type="primary"
-  onClick={handleModalOk} // Change handleOk to handleModalOk
-  style={{
-    borderRadius: '48px',
-    backgroundColor: '#617A55',
-    color: '#fff',
-    height: '50px',
-    width: '125px',
-    transition: 'background-color 0.3s ease',
-  }}
-  onMouseEnter={(e) => {
-    e.target.style.backgroundColor = '#496841';
-  }}
-  onMouseLeave={(e) => {
-    e.target.style.backgroundColor = '#617A55';
-  }}
->
-  บันทึก
-</Button>
-            </div>
-          ]}
-        >
+          <div key="footer-buttons" style={{ textAlign: 'center'}}>
+            <Button
+              key="submit"
+              type="primary"
+              onClick={handleModalOk} // Change handleOk to handleModalOk
+              style={{
+                borderRadius: '48px',
+                backgroundColor: '#617A55',
+                color: '#fff',
+                height: '35px',
+                width: '100px',
+                transition: 'background-color 0.3s ease',
+                fontSize: '20px',
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#496841';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = '#617A55';
+              }}
+            >
+              <div style={{marginTop:'-5px'}}>บันทึก</div>
+            </Button>
+          </div>
+        ]}
+      >
         {/* Add your modal content here */}
         <Form form={form} layout="vertical">
-        <Row gutter={[16, 16]}>
-          <Col span={12}>
-            <Form.Item label="ชื่อ" name="name">
-              <Input
+          <Row gutter={[16, 16]}>
+            <Col span={12}>
+              <Form.Item label="ชื่อ" name="name">
+                <Input
+                  style={{
+                    height: '40px',
+                    borderRadius: '48px',
+                    backgroundColor: '#C2D9BD',
+                  }}
+                  placeholder=""
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="นามสกุล" name="surname">
+                <Input
+                  style={{
+                    height: '40px',
+                    borderRadius: '48px',
+                    backgroundColor: '#C2D9BD',
+                  }}
+                  placeholder=""
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="อายุ" name="age">
+                <Input
+                  style={{
+                    height: '40px',
+                    borderRadius: '48px',
+                    backgroundColor: '#C2D9BD',
+                  }}
+                  placeholder=""
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="ตำแหน่งที่รับผิดชอบ" name="skill">
+                <Input
+                  style={{
+                    height: '40px',
+                    borderRadius: '48px',
+                    backgroundColor: '#C2D9BD',
+                  }}
+                  placeholder=""
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="เพศ" name="gender">
+                <Radio.Group>
+                  <Radio value="male">ชาย</Radio>
+                  <Radio value="female">หญิง</Radio>
+                  <Radio value="other">เพศทางเลือก</Radio>
+                </Radio.Group>
+              </Form.Item>
+            </Col>
+
+            {/* Add more form fields here */}
+          </Row>
+          <Col>
+            <Form.Item label="ประสบการณ์ในการทำงาน" name="additionalInfo">
+              <TextArea
                 style={{
-                  height: '40px',
-                  borderRadius: '48px',
+                  borderRadius: '8px',
                   backgroundColor: '#C2D9BD',
+
                 }}
-                placeholder=""
+                placeholder="กรุณากรอกข้อมูล"
+                rows={6}
               />
             </Form.Item>
           </Col>
-          <Col span={12}>
-            <Form.Item label="นามสกุล" name="surname">
-              <Input
-                style={{
-                  height: '40px',
-                  borderRadius: '48px',
-                  backgroundColor: '#C2D9BD',
-                }}
-                placeholder=""
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item label="อายุ" name="age">
-              <Input
-                style={{
-                  height: '40px',
-                  borderRadius: '48px',
-                  backgroundColor: '#C2D9BD',
-                }}
-                placeholder=""
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item label="ตำแหน่งที่รับผิดชอบ" name="skill">
-              <Input
-                style={{
-                  height: '40px',
-                  borderRadius: '48px',
-                  backgroundColor: '#C2D9BD',
-                }}
-                placeholder=""
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-          <Form.Item label="เพศ" name="gender">
-          <Radio.Group>
-            <Radio value="male">ชาย</Radio>
-            <Radio value="female">หญิง</Radio>
-            <Radio value="other">เพศทางเลือก</Radio>
-          </Radio.Group>
-        </Form.Item>
-        </Col>
-      
-          {/* Add more form fields here */}
-        </Row>
-        <Col>
-        <Form.Item label="ประสบการณ์ในการทำงาน" name="additionalInfo">
-          <TextArea
-            style={{
-              borderRadius: '8px',
-              backgroundColor: '#C2D9BD',
-              
-            }}
-            placeholder="กรุณากรอกข้อมูล"
-            rows={6}
-          />
-        </Form.Item>
-        </Col>
-      </Form>
+        </Form>
       </Modal>
     </>
   );
