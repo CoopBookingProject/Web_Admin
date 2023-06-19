@@ -13,7 +13,6 @@ const ForgotPassword = () => {
 
       <h1 style={{ marginLeft: '590px', fontSize: '56px', marginTop: '-78px' }}>ลืมรหัสผ่าน</h1>
 
-
       <div style={{ backgroundColor: '#C2D9BD', width: '306px', height: '254px', borderRadius: '56px', marginLeft: '567px', marginTop: '-20px' }}>
         <img src={Tel} style={{ width: "215px", height: "219px", marginLeft: '50px', marginTop: '17px' }} />
       </div>
