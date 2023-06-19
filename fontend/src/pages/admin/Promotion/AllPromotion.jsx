@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Col, Row, Input, Button, Radio, Space } from "antd";
 import bin from "../../../pic/bin.png";
 import edit from "../../../pic/edit.png";
+import { MenuOutlined, FormOutlined, DeleteOutlined } from '@ant-design/icons';
 import { TableSize, StyledTable } from "./TableStyled";
 
 const AllPromotion = () => {
@@ -56,18 +57,12 @@ const AllPromotion = () => {
       width: 100,
       align: "center",
       render: (text, record) => (
-        <div>
-          <img
-            src={edit}
-            style={{
-              width: "35px",
-              height: "35px",
-              cursor: "pointer",
-            }}
-            onClick={() => handleEditClick(record)}
-            alt="edit"
-          />
-        </div>
+        <Button
+        onClick={() => handleEditClick(record)}
+        icon={<FormOutlined />}
+        type="text"
+        style={{ color: '#000' }}
+      />
       ),
     },
     {
@@ -77,18 +72,12 @@ const AllPromotion = () => {
       width: 100,
       align: "center",
       render: (text, record) => (
-        <div>
-          <img
-            src={bin}
-            style={{
-              width: "35px",
-              height: "35px",
-              cursor: "pointer",
-            }}
-            onClick={() => handleDeleteRecord(record)}
-            alt="delete"
-          />
-        </div>
+        <Button
+        onClick={() => handleDelete(record)}
+        icon={<DeleteOutlined />}
+        type="text"
+        style={{ color: '#000' }}
+      />
       ),
     },
   ];
