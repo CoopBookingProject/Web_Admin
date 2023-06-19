@@ -3,7 +3,7 @@ import { Select, Modal, Input, Col, Row, TimePicker, DatePicker, Drawer, Radio, 
 import bin from "../../../pic/bin.png";
 import edit from "../../../pic/edit.png";
 import { TableSize, StyledTable } from "./TableStyle";
-
+import { MenuOutlined, FormOutlined, DeleteOutlined } from '@ant-design/icons';
 const { Option } = Select;
 const Allbook = () => {
   const [showModal, setShowModal] = useState(false);
@@ -91,9 +91,8 @@ const Allbook = () => {
       key: "role",
       width: 50,
       render: (text, record) => (
-        <img
-          src={edit}
-          style={{ width: "35px", height: "35px", cursor: "pointer" }}
+        <FormOutlined
+          style={{ fontSize: '18px', cursor: 'pointer', marginLeft: '8px' }}
           onClick={() => handleEditClick(record)}
         />
       ),
@@ -104,11 +103,10 @@ const Allbook = () => {
       key: "role",
       width: 50,
       render: (text, record) => (
-        <img
-          src={bin}
-          style={{ width: "35px", height: "35px", cursor: "pointer" }}
-          onClick={() => handleDeleteRecord(record)}
-        />
+        <DeleteOutlined
+      style={{ fontSize: '18px', cursor: 'pointer', marginLeft: '8px' }}
+      onClick={() => handleDeleteRecord(record)}
+    />
       ),
     },
   ];

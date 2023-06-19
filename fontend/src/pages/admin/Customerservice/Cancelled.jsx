@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TableSize, StyledTable } from "./TableStyle";
 import bin from "../../../pic/bin.png";
 import edit from "../../../pic/edit.png";
+import { MenuOutlined, FormOutlined, DeleteOutlined } from '@ant-design/icons';
 import {
   TimePicker,
   Select,
@@ -104,11 +105,12 @@ const Cancelled = () => {
       key: "role",
       width: 100,
       render: (text, record) => (
-        <img
-          src={edit}
-          style={{ width: "35px", height: "35px", cursor: "pointer" }}
-          onClick={() => showModal(record)}
-        />
+        <Button
+        onClick={() => showModal(record)}
+        icon={<FormOutlined />}
+        type="text"
+        style={{ color: '#000' }}
+      />
       ),
     },
     {
@@ -117,10 +119,11 @@ const Cancelled = () => {
       key: "role",
       width: 100,
       render: (text, record) => (
-        <img
-          src={bin}
-          style={{ width: "35px", height: "35px", cursor: "pointer" }}
-          onClick={() => handleDeleteRecord(record)}
+        <Button
+          onClick={() => handleDelete(record)}
+          icon={<DeleteOutlined />}
+          type="text"
+          style={{ color: '#000' }}
         />
       ),
     },
