@@ -63,7 +63,7 @@ const Admin = () => {
                     onClick={() => handleTableFillterClick("Cancelled")}
                     isActive={activeMenu === "Cancelled"}
                 >
-                    Cancelled
+                    ยกเลิก
                 </TableFillter>
                 <Line1></Line1>
                 {activeMenu && (

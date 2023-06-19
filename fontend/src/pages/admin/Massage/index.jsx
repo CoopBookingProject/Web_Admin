@@ -62,7 +62,7 @@ const Massage = () => {
           onClick={() => handleTableFillterClick("Cancelled")}
           isActive={activeMenu === "Cancelled"}
         >
-          Cancelled
+          ยกเลิก
         </TableFillter>
         <Line1 />
         {activeMenu && (
