@@ -92,32 +92,45 @@ const Admin = () => {
         bodyStyle={{ backgroundColor: '#fff', padding: '20px 20px 5px', borderRadius: '5px' }}
         width={650}
         footer={[
-            <div key="footer-buttons" style={{ textAlign: 'center' }}>
-             <Button
-  key="submit"
-  type="primary"
-  onClick={handleModalOk} // Change handleOk to handleModalOk
-  style={{
-    borderRadius: '48px',
-    backgroundColor: '#617A55',
-    color: '#fff',
-    height: '35px',
-    width: '100px',
-    transition: 'background-color 0.3s ease',
-    fontSize:'20px',
-  }}
-  onMouseEnter={(e) => {
-    e.target.style.backgroundColor = '#496841';
-  }}
-  onMouseLeave={(e) => {
-    e.target.style.backgroundColor = '#617A55';
-  }}
->
- <div style={{marginTop:'-5px'}}> บันทึก</div>
-</Button>
-            </div>
-          ]}
-        >
+          <div key="footer-buttons" style={{ textAlign: "center" }}>
+            <Button
+              key="submit"
+              type="primary"
+              onClick={handleModalOk}
+              style={{
+                borderRadius: "48px",
+                backgroundColor: "#617A55",
+                color: "#fff",
+                height: "35px",
+                width: "100px",
+                transition: "background-color 0.3s ease",
+                fontSize: "20px",
+                border: "none",
+                
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#496841";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#617A55";
+              }}
+            >
+              <span
+                style={{
+                  display: "inline-block",
+                  marginTop: "-5px",
+                  pointerEvents: "none",
+                  textAlign: "center",
+                  width: "100%",
+                  overflow: "auto", // Add this line to enable scrolling
+                }}
+              >
+                บันทึก
+              </span>
+            </Button>
+          </div>
+        ]}
+      >
         {/* Add your modal content here */}
         <Form form={form} layout="vertical">
         <Row gutter={[16, 16]}>
