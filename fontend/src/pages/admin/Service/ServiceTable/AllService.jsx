@@ -110,41 +110,33 @@ const AllService = () => {
       align: "center",
     },
     {
-      title: "เเก้ไขข้อมูล",
-      dataIndex: "edit",
-      key: "edit",
+      title: 'แก้ไขข้อมูล',
+      dataIndex: 'edit',
+      key: 'edit',
       width: 75,
-      align: "center",
-      render: (text, record) => (
+      align: 'center',
+      render: (_, record) => (
         <Button
           onClick={() => handleEdit(record)}
           icon={<FormOutlined />}
-          style={{
-            border: "none",
-            background: "transparent",
-            color: "#000",
-            boxShadow: "none",
-          }}
+          type="text"
+          style={{ color: '#000' }}
         />
       ),
     },
     // Delete column
     {
-      title: "ลบ",
-      dataIndex: "delete",
-      key: "delete",
-      width: 75,
-      align: "center",
-      render: (text, record) => (
+      title: 'ลบ',
+      dataIndex: 'delete',
+      key: 'delete',
+      width: 100,
+      align: 'center',
+      render: (_, record) => (
         <Button
           onClick={() => handleDelete(record)}
           icon={<DeleteOutlined />}
-          style={{
-            border: "none",
-            background: "transparent",
-            color: "#000",
-            boxShadow: "none",
-          }}
+          type="text"
+          style={{ color: '#000' }}
         />
       ),
     },
@@ -187,18 +179,30 @@ const AllService = () => {
                   height: "35px",
                   width: "100px",
                   transition: "background-color 0.3s ease",
-                  fontSize:'20px'
+                  fontSize: "20px",
+                  border: "none",
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = "#496841";
+                  e.currentTarget.style.backgroundColor = "#496841";
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = "#617A55";
+                  e.currentTarget.style.backgroundColor = "#617A55";
                 }}
               >
-                <div style={{marginTop:'-5px'}}>บันทึก</div>
+                <span
+                  style={{
+                    display: "inline-block",
+                    marginTop: "-5px",
+                    pointerEvents: "none",
+                    textAlign: "center",
+                    width: "100%",
+                    overflow: "auto", // Add this line to enable scrolling
+                  }}
+                >
+                  บันทึก
+                </span>
               </Button>
-            </div>,
+            </div>
           ]}
         >
           <Form form={form} layout="vertical">

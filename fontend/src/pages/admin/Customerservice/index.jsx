@@ -84,7 +84,44 @@ const Customerservice = () => {
                 visible={isModalOpen}
                 onCancel={handleCancel}
                 width="750px"
-                footer={null}
+                footer={[
+                    <div key="footer-buttons" style={{ textAlign: "center" }}>
+                      <Button
+                        key="submit"
+                        type="primary"
+                        onClick={handleCloseModal}
+                        style={{
+                          borderRadius: "48px",
+                          backgroundColor: "#617A55",
+                          color: "#fff",
+                          height: "35px",
+                          width: "100px",
+                          transition: "background-color 0.3s ease",
+                          fontSize: "20px",
+                          border: "none",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "#496841";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "#617A55";
+                        }}
+                      >
+                        <span
+                          style={{
+                            display: "inline-block",
+                            marginTop: "-5px",
+                            pointerEvents: "none",
+                            textAlign: "center",
+                            width: "100%",
+                            overflow: "auto", // Add this line to enable scrolling
+                          }}
+                        >
+                          บันทึก
+                        </span>
+                      </Button>
+                    </div>
+                  ]}
             >
                 <h1 style={{ marginLeft: "260px" }}>เพิ่มบริการลูกค้า</h1>
                 <Row gutter={[16, 16]}>
@@ -240,24 +277,7 @@ const Customerservice = () => {
                     </Col>
                 </Row>
 
-                <div
-                    style={{
-                        marginLeft: '300px',
-                        fontSize: '20px',
-                        textAlign: 'center',
-                        width: '100px',
-                        height: '35px',
-                        borderRadius: '48px',
-                        backgroundColor: '#617A55',
-                        marginTop: '15px',
-                        cursor: 'pointer',
-                        color: '#fff',
-                    }}
-                    onClick={handleCloseModal}
-                >
-                    <div>ปิด</div>
-                </div>
-            </Modal>
+         </Modal>
         </>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Select, Modal, Input, Col, Row, TimePicker, DatePicker, Drawer, Radio, Space } from "antd";
+import { Select, Modal, Input, Col, Row, TimePicker, DatePicker, Drawer, Radio, Space , Button} from "antd";
 import bin from "../../../pic/bin.png";
 import edit from "../../../pic/edit.png";
 import { TableSize, StyledTable } from "./TableStyle";
@@ -91,9 +91,11 @@ const Allbook = () => {
       key: "role",
       width: 50,
       render: (text, record) => (
-        <FormOutlined
-          style={{ fontSize: '18px', cursor: 'pointer', marginLeft: '8px' }}
+        <Button
           onClick={() => handleEditClick(record)}
+          icon={<FormOutlined />}
+          type="text"
+          style={{ color: '#000' }}
         />
       ),
     },
@@ -103,9 +105,11 @@ const Allbook = () => {
       key: "role",
       width: 50,
       render: (text, record) => (
-        <DeleteOutlined
-          style={{ fontSize: '18px', cursor: 'pointer', marginLeft: '8px' }}
+        <Button
           onClick={() => handleDeleteRecord(record)}
+          icon={<DeleteOutlined />}
+          type="text"
+          style={{ color: '#000' }}
         />
       ),
     },
@@ -295,8 +299,43 @@ const Allbook = () => {
                 color: '#fff',
               }}
               onClick={handleCloseModal}
+            ><div key="footer-buttons" style={{ textAlign: "center" }}>
+            <Button
+              key="submit"
+              type="primary"
+              onClick={handleCloseModal}
+              style={{
+                borderRadius: "48px",
+                backgroundColor: "#617A55",
+                color: "#fff",
+                height: "35px",
+                width: "100px",
+                transition: "background-color 0.3s ease",
+                fontSize: "20px",
+                border: "none",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#496841";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#617A55";
+              }}
             >
-              <div>ปิด</div>
+              <span
+                style={{
+                  display: "inline-block",
+                  marginTop: "-5px",
+                  pointerEvents: "none",
+                  textAlign: "center",
+                  width: "100%",
+                  overflow: "auto", // Add this line to enable scrolling
+                }}
+              >
+                ปิด
+              </span>
+            </Button>
+          </div>
+              
             </div>
           </div>
         </div>

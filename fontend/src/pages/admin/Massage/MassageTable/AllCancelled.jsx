@@ -56,56 +56,20 @@ const columns = [
           break;
         default:
           color = 'default';
-          text = 'ออฟไลน์';
+          text = 'ลาออก';
       }
   
       return <Badge status={color} text={text} />;
     },
   },
   {
-    title: "เเก้ไขข้อมูล",
-    dataIndex: "edit",
-    key: "edit",
+    title: "วันที่ลบ",
+    dataIndex: "deleteDate",
+    key: "deleteDate",
     width: 100,
     align: "center",
-    render: (text, record) => (
-      <Button
-        onClick={() => handleEdit(record)}
-        icon={<FormOutlined />}
-        style={{
-          border: "none",
-          background: "transparent",
-          color: "#000",
-          boxShadow: "none",
-        }}
-      />
-    ),
   },
-  {
-    title: "ลบ",
-    dataIndex: "delete",
-    key: "delete",
-    width: 100,
-    align: "center",
-    render: (text, record) => (
-      <Button
-        onClick={() => handleDelete(record)}
-        icon={<DeleteOutlined />}
-        style={{
-          border: "none",
-          background: "transparent",
-          color: "#000",
-          boxShadow: "none",
-        }}
-      />
-    ),
-  },
-  {
-    title: "Action",
-    key: 'sort',
-    width: 50,
-    align: "center",
-  },
+  
 ];
 
 const Row = ({ children, ...props }) => {
@@ -177,7 +141,7 @@ const AllCancelled = () => {
       name: 'Jim Green',
       surname: 'Jim',
       skill: 'นวดน้ำมัน',
-      status: 'Process',
+      deleteDate: '03/01/2566'
     },
     {
       key: '2',
@@ -185,7 +149,7 @@ const AllCancelled = () => {
       name: 'Joe Black',
       surname: 'Jim',
       skill: 'นวดหลัง',
-      status: 'Idle',
+      deleteDate: '03/01/2566'
     },
   ]);
   const onDragEnd = ({ active, over }) => {
