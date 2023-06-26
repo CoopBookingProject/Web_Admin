@@ -63,11 +63,7 @@ const Book = () => {
         <>
             <Header>
                 <h1>จองคิว</h1>
-                <Iconbutton style={{ cursor: 'pointer' }} onClick={handleAddBookingClick}>
-                    <Bar1></Bar1>
-                    <Bar2></Bar2>
-                    <p style={{ marginLeft: "63px" }}>เพิ่มการจอง</p>
-                </Iconbutton>
+                
             </Header>
 
             <AdminBody>
