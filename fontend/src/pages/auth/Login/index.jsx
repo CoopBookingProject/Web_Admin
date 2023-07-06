@@ -1,54 +1,96 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Assuming you are using react-router-dom for routing
-import Loginmassage from '../../../pic/Loginmassage.jpg';
-import Logokenko1 from '../../../pic/Logokenko1.png';
+import React, { useState } from 'react';
 import { Input } from 'antd';
+import { Link, useHistory } from 'react-router-dom';
+import { Post } from "../../../service/http";
+
+import {
+  LoginPosition,
+  LoginBox,
+  LoginLogo,
+  LoginHeading,
+  LoginText,
+  PasswordText,
+  InputContainer,
+  ForgotText,
+  LoginButton,
+  LoginButtonText
+} from "./LoginStyled";
 
 const Login = () => {
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginMessage, setLoginMessage] = useState("");
+  const history = useHistory();
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const postLogin = async () => {
+    const result = await Post("/login", {
+      username: username,
+      password: password
+    });
+
+    if (result.status === 200) {
+      setLoginMessage("Login successful!");
+      // Navigate to the desired page after successful login
+      history.push("/dashboard");
+    } else {
+      setLoginMessage("Login failed. Please try again.");
+    }
+  };
+
   const goToPage = () => {
     // Implement the logic to navigate to the "/ForgotPassword" page here
   };
 
   return (
-    <>
-      <div>
-        <>
-          <div className="Loginmassage">
-            <div style={{ marginLeft: '230px', paddingTop: '50px' }}>
-              <div style={{ backgroundColor: '#C2D9BD', width: '480px', height: '650px', borderRadius: '30px' }}>
-                <div>
-                  <img src={Logokenko1} style={{ width: "390px", height: "170px", marginLeft: '50px', marginTop: '35px' }} />
-                </div>
-                <h6 style={{ marginLeft: '210px', fontSize: '20px', marginTop: '-20px' }}>
-                  เข้าสู่ระบบ
-                </h6>
-                <div style={{ fontSize: '13px', marginTop: '-20px', marginLeft: '75px' }}>
-                  ชื่อบัญชีผู้ใช้
-                </div>
-                <div style={{ width: '350px', borderRadius: '48px', marginLeft: '70px', marginTop: '10px' }}>
-                  <Input style={{ height: '50px', borderRadius: '48px' }} placeholder="" />
-                </div>
-                <div style={{ fontSize: '13px', marginLeft: '75px', marginTop: '15px' }}>
-                  รหัสผ่าน
-                </div>
-                <div style={{ width: '350px', borderRadius: '48px', marginLeft: '70px', marginTop: '10px' }}>
-                  <Input style={{ height: '50px', borderRadius: '48px' }} placeholder="" />
-                </div>
-                <div style={{ fontSize: '13px', marginLeft: '350px', marginTop: '20px' }}>
-                  <Link style={{color:'#000000'}} to="/ForgotPassword">ลืมรหัสผ่าน</Link>
-                </div>
-                <div style={{ backgroundColor: '#617A55', marginLeft: '70px', width: '350px', height: '50px', borderRadius: '48px', marginTop: '40px' }}>
-                  <div style={{ marginLeft: '130px', padding: '10px', color: '#ffffff', fontSize: '20px' }}>
-                    เข้าสู่ระบบ
-                  </div>
-                </div>
-              </div>
+    <div>
+      <div className="Loginmassage">
+        <LoginPosition>
+          <LoginBox>
+            <div>
+              <LoginLogo />
             </div>
-          </div>
-        </>
+            <LoginHeading>เข้าสู่ระบบ</LoginHeading>
+            <LoginText>ชื่อบัญชีผู้ใช้</LoginText>
+            <InputContainer>
+              <Input
+                style={{ height: '50px', borderRadius: '48px' }}
+                value={username}
+                onChange={handleUsernameChange}
+              />
+            </InputContainer>
+            <PasswordText>รหัสผ่าน</PasswordText>
+            <InputContainer>
+              <Input
+                style={{ height: '50px', borderRadius: '48px' }}
+                value={password}
+                onChange={handlePasswordChange}
+                type="password"
+              />
+            </InputContainer>
+            <ForgotText>
+              <Link style={{ color: '#000000' }} to="/ForgotPassword">
+                ลืมรหัสผ่าน
+              </Link>
+            </ForgotText>
+            <LoginButton onClick={postLogin}>
+              <LoginButtonText>เข้าสู่ระบบ</LoginButtonText>
+            </LoginButton>
+            {loginMessage && <div>{loginMessage}</div>}
+          </LoginBox>
+        </LoginPosition>
       </div>
-    </>
+    </div>
   );
 };
 
 export default Login;
+
