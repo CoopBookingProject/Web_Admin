@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { NavLink as BaseNavLink } from "react-router-dom";
+import { Select } from "antd";
+
 
 export const AdminHeader = styled.div`
   display: flex;
@@ -79,3 +81,36 @@ export const MainTable = styled.div`
   position: absolute;
   margin-top: 20px;
 `;
+
+export const RoleSelect = styled(Select)`
+  && {
+    width: 275px;
+    border-radius: 48px;
+    z-index: 2;
+    margin-top: 4px;
+
+    .ant-select-selection-placeholder {
+      color: #999999; /* ตัวอย่าง: เปลี่ยนสีข้อความ placeholder */
+    }
+
+    .ant-select-selector {
+      background: transparent;
+      border: none;
+      box-shadow: none !important; /* เอาออกเงา (box shadow) */
+    }
+
+    .ant-select-arrow {
+      color: #333333; /* ตัวอย่าง: เปลี่ยนสีลูกศรดรอปดาวน์ */
+    }
+
+    .ant-select-selector:hover,
+    .ant-select-selector:focus,
+    .ant-select-selector:active {
+      background: transparent;
+      box-shadow: none !important;
+    }
+  }
+`;
+
+
+

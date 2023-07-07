@@ -19,15 +19,6 @@ const AllCancelled = () => {
       phone: "0800470816",
       deletedate: "03/01/2000",   //Use Datetime
     },
-    {
-      key: "2",
-      id: 2,
-      firstname: "Pol",
-      lastname: "pot",
-      position: "Manager",
-      phone: "0619192573",
-      deletedate: "04/15/1998",
-    },
   ];
 
   const columns = [

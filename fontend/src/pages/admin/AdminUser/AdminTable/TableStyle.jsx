@@ -7,6 +7,7 @@ export const TableSize = styled.div`
   margin-top: 33px;
   width: 1244px;
 `;
+
 export const StyledTable = styled(Table)`
   .ant-table-thead > tr > th {
     background-color: #C2D9BD;
