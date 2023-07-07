@@ -1,88 +1,152 @@
-import React, { useState } from "react";
-import { Button, Input, Modal, Form, Row, Col } from 'antd';
+//Import Tool Here
+import React, { useState, useEffect } from "react";
+import { Button, Input, Modal, Form, Row, Col, Select } from 'antd';
+
+//Import Component Here
 import AllCancelled from "./AdminTable/AllCancelled";
 import AllAdmin from "./AdminTable/AllAdmin";
 
+//Import Styled Here
 import {
-    AdminHeader,
-    Iconbutton,
-    Bar1,
-    Bar2,
-    AdminBody,
-    TableFillter,
-    Line1,
-    Line2,
-    MainTable,
+  AdminHeader,
+  Iconbutton,
+  Bar1,
+  Bar2,
+  AdminBody,
+  TableFillter,
+  Line1,
+  Line2,
+  MainTable,
+  RoleSelect
 } from "./AdminStyled";
 
+//Import API Here
+import {
+  Get,
+  Post,
+  Update,
+  Delete
+} from "../../../service/http";
+
+//Styled Function
 const { useForm } = Form;
 
 const Admin = () => {
-    const [activeMenu, setActiveMenu] = useState("เเอดมินทั้งหมด");
-    const [modalVisible, setModalVisible] = useState(false);
-    
-    const [form] = useForm(); // Declare the form object
+  //Other Function
+  const [activeMenu, setActiveMenu] = useState("เเอดมินทั้งหมด");
+  const [modalVisible, setModalVisible] = useState(false);
 
-    const handleTableFillterClick = (menu) => {
-        setActiveMenu(menu);
-    };
-    
-    const handleAddAdminClick = () => {
-        setModalVisible(true);
-      };
-    
-    const handleModalOk = () => {
-        // Handle OK button click
-        setModalVisible(false);
-    };
-    
-    const handleModalCancel = () => {
-        // Handle Cancel button click
-        setModalVisible(false);
-    };
+  //Styled Funce
+  const [form] = useForm();
 
+  //Get Role Form API 
+  const [roles, setRoles] = useState([]);
+  const getRole = async () => {
+    const result = await Get('/roles');
+    if (result.status === 200) {
+      setRoles(result.data.data);
+      console.log('Roles1:', result.data.data);
+    } else {
+      // Handle error
+    }
+  };
 
-    return (
-        <>
-            <AdminHeader>
-                <h1 style={{ pointerEvents: 'none' }}>แอดมิน</h1>
-                <Iconbutton  onClick={handleAddAdminClick}>
-                    <Bar1></Bar1>
-                    <Bar2></Bar2>
-                    <p style={{ marginLeft: '63px' }}>เพิ่มแอดมิน</p>
-                </Iconbutton>
-            </AdminHeader>
-            <AdminBody>
-                <TableFillter
-                    onClick={() => handleTableFillterClick("เเอดมินทั้งหมด")}
-                    isActive={activeMenu === "เเอดมินทั้งหมด"}
-                >
-                    เเอดมินทั้งหมด
-                </TableFillter>
-                <TableFillter
-                    onClick={() => handleTableFillterClick("Cancelled")}
-                    isActive={activeMenu === "Cancelled"}
-                >
-                    ยกเลิก
-                </TableFillter>
-                <Line1></Line1>
-                {activeMenu && (
-                    <Line2
-                        style={{ marginLeft: activeMenu === "เเอดมินทั้งหมด" ? "0px" : "125px" }}
-                    ></Line2>
-                )}
-                <MainTable>
-                    {activeMenu === "เเอดมินทั้งหมด" && <AllAdmin />}
-                    {activeMenu === "Cancelled" && <AllCancelled />}
-                </MainTable>
-            </AdminBody>
+  //Create Admin
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    roleID: null,
+  });
 
-            <Modal
+  const createAdmin = async () => {
+    console.log('Form Values:', data);
+
+    const result = await Post('/admins', {
+      firstname: data.  firstName,
+      lastname: data.lastName,
+      phonenumber: data.phoneNumber,
+      roleID: data.roleID,
+    });
+
+    if (result.status === 200) {
+      // Handle success
+      console.log('Admin created successfully!');
+    } else {
+      // Handle error
+      console.error('Error creating admin:', result.error);
+    }
+  };
+
+  const handleTableFillterClick = (menu) => {
+    setActiveMenu(menu);
+  };
+
+  const handleAddAdminClick = () => {
+    setModalVisible(true);
+  };
+
+  const handleModalOk = () => {
+    createAdmin();
+
+  };
+
+  const handleModalCancel = () => {
+    // Handle Cancel button click
+    setModalVisible(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+    console.log(value)
+  };
+
+  useEffect(() => {
+    getRole();
+  }, []);
+
+  return (
+    <>
+      <AdminHeader>
+        <h1 style={{ pointerEvents: 'none' }}>แอดมิน</h1>
+        <Iconbutton onClick={handleAddAdminClick}>
+          <Bar1></Bar1>
+          <Bar2></Bar2>
+          <p style={{ marginLeft: '63px' }}>เพิ่มแอดมิน</p>
+        </Iconbutton>
+      </AdminHeader>
+      <AdminBody>
+        <TableFillter
+          onClick={() => handleTableFillterClick("เเอดมินทั้งหมด")}
+          isActive={activeMenu === "เเอดมินทั้งหมด"}
+        >
+          เเอดมินทั้งหมด
+        </TableFillter>
+        <TableFillter
+          onClick={() => handleTableFillterClick("Cancelled")}
+          isActive={activeMenu === "Cancelled"}
+        >
+          ยกเลิก
+        </TableFillter>
+        <Line1></Line1>
+        {activeMenu && (
+          <Line2
+            style={{ marginLeft: activeMenu === "เเอดมินทั้งหมด" ? "0px" : "125px" }}
+          ></Line2>
+        )}
+        <MainTable>
+          {activeMenu === "เเอดมินทั้งหมด" && <AllAdmin />}
+          {activeMenu === "Cancelled" && <AllCancelled />}
+        </MainTable>
+      </AdminBody>
+
+      <Modal
         title={
-            <h1 style={{ textAlign: 'center', marginBottom: '10px' }}>
-              เพิ่มข้อมูลแอดมิน
-            </h1>
-          }
+          <h1 style={{ textAlign: 'center', marginBottom: '10px' }}>
+            เพิ่มข้อมูลแอดมิน
+          </h1>
+        }
         visible={modalVisible}
         onOk={handleModalOk}
         onCancel={handleModalCancel}
@@ -106,7 +170,7 @@ const Admin = () => {
                 transition: "background-color 0.3s ease",
                 fontSize: "20px",
                 border: "none",
-                
+
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = "#496841";
@@ -133,59 +197,86 @@ const Admin = () => {
       >
         {/* Add your modal content here */}
         <Form form={form} layout="vertical">
-        <Row gutter={[16, 16]}>
-          <Col span={12}>
-            <Form.Item label="ชื่อ" name="name">
-              <Input
-                style={{
-                  height: '40px',
-                  borderRadius: '48px',
-                  backgroundColor: '#C2D9BD',
-                }}
-                placeholder=""
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item label="นามสกุล" name="surname">
-              <Input
-                style={{
-                  height: '40px',
-                  borderRadius: '48px',
-                  backgroundColor: '#C2D9BD',
-                }}
-                placeholder=""
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item label="ตำแหน่งงานที่รับผิดชอบ" name="position">
-              <Input
-                style={{
-                  height: '40px',
-                  borderRadius: '48px',
-                  backgroundColor: '#C2D9BD',
-                }}
-                placeholder=""
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item label="เบอร์โทรศัพท์" name="phone">
-              <Input
-                style={{
-                  height: '40px',
-                  borderRadius: '48px',
-                  backgroundColor: '#C2D9BD',
-                }}
-                placeholder=""
-              />
-            </Form.Item>
-          </Col>
-        
-          {/* Add more form fields here */}
-        </Row>
-       </Form>
+          <Row gutter={[16, 16]}>
+            <Col span={12}>
+              <Form.Item label="ชื่อ" name="firstName">
+                <Input
+                  style={{
+                    height: '40px',
+                    borderRadius: '48px',
+                    backgroundColor: '#C2D9BD',
+                  }}
+                  placeholder=""
+                  name="firstName"
+                  value={data.firstName}
+                  onChange={handleInputChange}
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="นามสกุล" name="lastName">
+                <Input
+                  style={{
+                    height: '40px',
+                    borderRadius: '48px',
+                    backgroundColor: '#C2D9BD',
+                  }}
+                  placeholder=""
+                  name="lastName"
+                  value={data.lastName}
+                  onChange={handleInputChange}
+                />
+              </Form.Item>
+            </Col>
+
+            <Col span={12}>
+              <Form.Item label="Role" name="role">
+                <Input
+                  style={{
+                    height: '40px',
+                    borderRadius: '48px',
+                    backgroundColor: '#C2D9BD',
+                    position: "absolute",
+                    cursor: "pointer"
+                  }}
+                  placeholder=""
+                  disabled={true}
+                />
+                <RoleSelect
+                  placeholder="----- เลือก -----"
+                  mode="combobox"
+                  name="roleID"
+                  value={data.roleID}
+                  onChange={(value) => setData({ ...data, roleID: value })}
+                >
+                  {roles.map((role) => (
+                    <Select.Option key={role.ID} value={role.ID}>
+                      {role.Name}
+                    </Select.Option>
+                  ))}
+                </RoleSelect>
+              </Form.Item>
+
+            </Col>
+            <Col span={12}>
+              <Form.Item label="เบอร์โทรศัพท์" name="phone">
+                <Input
+                  style={{
+                    height: '40px',
+                    borderRadius: '48px',
+                    backgroundColor: '#C2D9BD',
+                  }}
+                  placeholder=""
+                  name="phoneNumber"
+                  value={data.phoneNumber}
+                  onChange={handleInputChange}
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Add more form fields here */}
+          </Row>
+        </Form>
       </Modal>
     </>
   );
