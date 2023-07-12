@@ -63,7 +63,7 @@ const Admin = () => {
     console.log('Form Values:', data);
 
     const result = await Post('/admins', {
-      firstname: data.  firstName,
+      firstname: data.firstName,
       lastname: data.lastName,
       phonenumber: data.phoneNumber,
       roleID: data.roleID,
