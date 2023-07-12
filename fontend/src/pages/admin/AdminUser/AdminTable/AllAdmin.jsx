@@ -9,11 +9,8 @@ const AllAdmin = () => {
 
 //
   const [editModalVisible, setEditModalVisible] = useState(false);
-  const [editedData, setEditedData] = useState(null);
-
 
   const [admin, setAdmin] = useState([]);
-
 
   const [form] = Form.useForm();
 
@@ -22,6 +19,7 @@ const AllAdmin = () => {
   }, []);
 
   //Get Admin Form API 
+  const [editedData, setEditedData] = useState(null);
   const getAdmin = async () => {
     const result = await Get('/admins');
     if (result.status === 200) {

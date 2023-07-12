@@ -90,17 +90,17 @@ export const RoleSelect = styled(Select)`
     margin-top: 4px;
 
     .ant-select-selection-placeholder {
-      color: #999999; /* ตัวอย่าง: เปลี่ยนสีข้อความ placeholder */
+      color: #999999; 
     }
 
     .ant-select-selector {
       background: transparent;
       border: none;
-      box-shadow: none !important; /* เอาออกเงา (box shadow) */
+      box-shadow: none !important; 
     }
 
     .ant-select-arrow {
-      color: #333333; /* ตัวอย่าง: เปลี่ยนสีลูกศรดรอปดาวน์ */
+      color: #000000; 
     }
 
     .ant-select-selector:hover,
