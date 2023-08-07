@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from 'antd';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Post } from "../../../service/http";
 
 import {
@@ -21,7 +21,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginMessage, setLoginMessage] = useState("");
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);

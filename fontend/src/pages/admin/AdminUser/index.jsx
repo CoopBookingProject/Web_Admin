@@ -52,29 +52,40 @@ const Admin = () => {
   };
 
   //Create Admin
-  const [data, setData] = useState({
+  const [admin, setAdmin] = useState({
+    userName: "",
+    password: "",
     firstName: "",
     lastName: "",
     phoneNumber: "",
     roleID: null,
+    DateTime: new Date()
   });
 
+  // Create Admin
   const createAdmin = async () => {
-    console.log('Form Values:', data);
+    console.log('Form Values:', admin);
 
-    const result = await Post('/admins', {
-      firstname: data.firstName,
-      lastname: data.lastName,
-      phonenumber: data.phoneNumber,
-      roleID: data.roleID,
-    });
+    try {
+      const data = await Post('/admins', {
+        username: admin.userName,
+        password: admin.password,
+        first_name: admin.firstName,
+        last_name: admin.lastName,
+        phone_number: admin.phoneNumber,
+        role_id: admin.roleID,
+        date_time: admin.DateTime
+      });
 
-    if (result.status === 200) {
-      // Handle success
-      console.log('Admin created successfully!');
-    } else {
-      // Handle error
-      console.error('Error creating admin:', result.error);
+      if (data.status === 200) {
+        // Handle success
+        console.log('Admin created successfully!');
+      } else {
+        // Handle error
+        console.error('Error creating admin:', data.error || 'Unknown error');
+      }
+    } catch (error) {
+      console.error('Error creating admin:', error);
     }
   };
 
@@ -98,7 +109,7 @@ const Admin = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setData({ ...data, [name]: value });
+    setAdmin({ ...admin, [name]: value });
     console.log(value)
   };
 
@@ -208,7 +219,7 @@ const Admin = () => {
                   }}
                   placeholder=""
                   name="firstName"
-                  value={data.firstName}
+                  value={admin.firstName}
                   onChange={handleInputChange}
                 />
               </Form.Item>
@@ -223,7 +234,7 @@ const Admin = () => {
                   }}
                   placeholder=""
                   name="lastName"
-                  value={data.lastName}
+                  value={admin.lastName}
                   onChange={handleInputChange}
                 />
               </Form.Item>
@@ -246,8 +257,8 @@ const Admin = () => {
                   placeholder="----- เลือก -----"
                   mode="combobox"
                   name="roleID"
-                  value={data.roleID}
-                  onChange={(value) => setData({ ...data, roleID: value })}
+                  value={admin.roleID}
+                  onChange={(value) => setAdmin({ ...admin, roleID: value })}
                 >
                   {roles.map((role) => (
                     <Select.Option key={role.ID} value={role.ID}>
@@ -268,7 +279,7 @@ const Admin = () => {
                   }}
                   placeholder=""
                   name="phoneNumber"
-                  value={data.phoneNumber}
+                  value={admin.phoneNumber}
                   onChange={handleInputChange}
                 />
               </Form.Item>
